@@ -10,11 +10,11 @@ export const addOne = (number) => {
     return({type:ADD_ONE, payload:number});
 }
 
-export const applyNumber = () => {
-    return({type:APPLY_NUMBER});
+export const applyNumber = (number) => {
+    return({type:APPLY_NUMBER, payload:number});
 }
-export const changeOperator = (number) => {
-    return({type:CHANGE_OPERATION, payload:number});
+export const changeOperator = (operation) => {
+    return({type:CHANGE_OPERATION, payload:operation});
 }
 export const clearDisplay = () => {
     return { type: CLEAR_DISPLAY };
