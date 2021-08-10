@@ -1,10 +1,12 @@
 import { CHANGE_OPERATION, APPLY_NUMBER, MEMORY_CLEAR, MEMORY_PLUS, MEMORY_RECALL, CLEAR_DISPLAY } from './../actions';
 
 export const initialState = {
-    total: 100,
+    // total: 100,
+    total:0,
     operation: "*",
-    memory: 100
-}
+    // memory: 100
+    memory:100,
+};
 
 const calculateResult = (num1, num2, operation) => {
     switch(operation) {
