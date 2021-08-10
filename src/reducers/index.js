@@ -1,28 +1,29 @@
-import { CHANGE_OPERATION, APPLY_NUMBER, MEMORY_CLEAR, MEMORY_PLUS, MEMORY_RECALL, CLEAR_DISPLAY } from './../actions';
+import { ADD_ONE, APPLY_NUMBER, CHANGE_OPERATION, CLEAR_DISPLAY, CURRENT_MEMORY, APPLY_MEMORY, CLEAR_MEMORY } from './../actions';
 
 export const initialState = {
-    // total: 100,
-    total:0,
-    operation: "*",
-    // memory: 100
-    memory:100,
-};
+    total: 0,
+    operation: "+",
+    memory: 0
+}
 
 const calculateResult = (num1, num2, operation) => {
-    switch(operation) {
+    switch(operation) {                                                                    
         case("+"):
             return num1 + num2;
         case("*"):
             return num1 * num2;
         case("-"):
             return num1 - num2;
-            default:
-            return operation;
     }
 }
 
 const reducer = (state, action) => {
     switch(action.type) {
+        case(ADD_ONE):
+            return({
+                ...state,
+                total: state.total + 1
+            });
 
         case(APPLY_NUMBER):
             return ({ 
@@ -35,28 +36,31 @@ const reducer = (state, action) => {
                 ...state,
                 operation: action.payload
             });
-            case CLEAR_DISPLAY:
-            return {
-                ...state,
-                total: 0,
-            };
-            case MEMORY_PLUS:
-            return {
-                ...state,
-                memory: state.total,
-            };
-            case MEMORY_CLEAR:
-            return {
-                ...state,
-                memory: 0,
-            };
-            case MEMORY_RECALL:
-            return {
-                ...state,
-                total: state.memory,
-            };
 
-            
+        case(CLEAR_DISPLAY):
+            return({
+                ...state,
+                total: 0
+            });
+
+        case(CURRENT_MEMORY):
+            return({
+                ...state,
+                memory: state.total
+            });
+        
+        case(APPLY_MEMORY):
+            return({
+                ...state,
+                total: state.total + state.memory
+            })
+
+        case(CLEAR_MEMORY):
+            return({
+                ...state,
+                memory: 0
+            })
+             
         default:
             return state;
     }
