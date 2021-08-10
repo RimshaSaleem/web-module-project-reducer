@@ -4,6 +4,7 @@ export const CHANGE_OPERATION = "CHANGE_OPERATION";
 export const CLEAR_DISPLAY = "CLEAR_DISPLAY";
 export const MEMORY_CLEAR = "MEMORY_CLEAR";
 export const MEMORY_PLUS = "MEMORY_PLUS";
+export const MEMORY_RECALL = "MEMORY_RECALL";
 
 export const addOne = (number) => {
     return({type:ADD_ONE, payload:number});
@@ -24,4 +25,7 @@ export const memoryClear = () => {
 };
 export const memoryPlus = (total) => {
     return { type: MEMORY_PLUS, payload: total };
+};
+export const memoryRecall = (memory) => {
+    return { type: MEMORY_RECALL, payload: memory };
 };
